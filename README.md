@@ -14,9 +14,13 @@
 >
 > AI 驅動的即時手勢辨識系統 -- 結合 MediaPipe 手部追蹤與自訂手勢分類模型，支援 macOS Metal 硬體加速。
 
+## 📋 Quick Summary
+
+> ✋ **AI Visual Gesture Recognition** 是一套基於電腦視覺的即時手勢辨識桌面應用程式。系統採用 🔍 Google MediaPipe 進行 21 點手部關鍵點追蹤，支援雙手同時偵測，搭配自研的 🧠 規則式手勢分類引擎，可精準辨識 8 種手勢類型：握拳 ✊、張開手掌 🖐️、比讚 👍、YA ✌️、OK 👌、指向 👆、搖滾 🤟、三指 🤞，每個手勢附帶 0-1 信心度分數。桌面介面以 🖥️ PyQt6 打造，支援 macOS 原生 Apple Metal GPU 硬體加速，大幅提升渲染與推論效能。內建 📊 即時效能監控儀表板，可追蹤 CPU、記憶體、GPU 使用率並設定警告閾值。模型架構採用 🔌 抽象基類設計的可插拔介面，目前使用基於手指彎曲角度的規則引擎，未來可無縫替換為 LSTM、Transformer 等深度學習模型。核心技術棧為 🐍 Python + OpenCV + MediaPipe + PyQt6，適合電腦視覺研究與人機互動原型開發 🚀。
+
 ---
 
-## Highlights / 專案亮點
+## ⭐ Highlights / 專案亮點
 
 | Feature | Description |
 |---------|-------------|
@@ -29,7 +33,7 @@
 
 ---
 
-## Architecture / 系統架構
+## 🏗️ Architecture / 系統架構
 
 ```
 ai-visual-gesture-recognition/
@@ -68,7 +72,7 @@ ai-visual-gesture-recognition/
 
 ---
 
-## Tech Stack / 技術棧
+## 🛠️ Tech Stack / 技術棧
 
 ```
   Vision        MediaPipe Hands  |  21-point landmark tracking
@@ -81,9 +85,9 @@ ai-visual-gesture-recognition/
 
 ---
 
-## Gesture Recognition / 手勢辨識
+## ✋ Gesture Recognition / 手勢辨識
 
-### Supported Gestures / 支援的手勢類型
+### 🤚 Supported Gestures / 支援的手勢類型
 
 | Gesture | Chinese | Detection Method | Confidence |
 |---------|---------|-----------------|------------|
@@ -96,7 +100,7 @@ ai-visual-gesture-recognition/
 | **Rock** | 搖滾 | Pinky extended, others curled | 0.85 |
 | **Three** | 三 | Three fingers extended | 0.80 |
 
-### Recognition Pipeline / 辨識流程
+### ⚙️ Recognition Pipeline / 辨識流程
 
 ```
 Camera Frame                         Gesture Output
@@ -115,9 +119,9 @@ Camera Frame                         Gesture Output
 
 ---
 
-## Quick Start / 快速開始
+## 🏁 Quick Start / 快速開始
 
-### 1. Install Dependencies / 安裝依賴
+### 📦 1. Install Dependencies / 安裝依賴
 
 ```bash
 # Create virtual environment (recommended)
@@ -139,7 +143,7 @@ pip install -r requirements.txt
 | `psutil` | >= 5.9.0 | System performance monitoring |
 | `gputil` | >= 1.4.0 | GPU monitoring (optional) |
 
-### 2. Run the Application / 啟動應用
+### 🚀 2. Run the Application / 啟動應用
 
 ```bash
 python main.py
@@ -152,7 +156,7 @@ chmod +x run.sh
 ./run.sh
 ```
 
-### 3. Usage / 使用方式
+### 💡 3. Usage / 使用方式
 
 ```
 1. Select a camera source from the dropdown
@@ -170,9 +174,9 @@ chmod +x run.sh
 
 ---
 
-## Performance / 效能表現
+## 📈 Performance / 效能表現
 
-### Metal GPU Acceleration (macOS)
+### 🍎 Metal GPU Acceleration (macOS)
 
 The system automatically enables Apple Metal acceleration on macOS:
 
@@ -182,7 +186,7 @@ os.environ["QSG_RHI_BACKEND"] = "metal"       # PyQt6 Metal rendering
 os.environ["MEDIAPIPE_DISABLE_GPU"] = "0"      # MediaPipe GPU inference
 ```
 
-### Performance Thresholds / 效能警告閾值
+### ⚠️ Performance Thresholds / 效能警告閾值
 
 | Metric | Warning | Danger |
 |--------|---------|--------|
@@ -190,7 +194,7 @@ os.environ["MEDIAPIPE_DISABLE_GPU"] = "0"      # MediaPipe GPU inference
 | Memory | 500 MB | 1000 MB |
 | GPU Usage | 70% | 90% |
 
-### Benchmarking / 效能測試
+### 🧪 Benchmarking / 效能測試
 
 ```bash
 python benchmark.py
@@ -198,7 +202,7 @@ python benchmark.py
 
 ---
 
-## Model Architecture / 模型架構
+## 🧠 Model Architecture / 模型架構
 
 The project uses a **pluggable model interface** via abstract base class:
 
@@ -218,7 +222,7 @@ class DummyModel(GestureModel): ...
 class MLModel(GestureModel): ...    # LSTM / Transformer / CNN
 ```
 
-### Finger Detection Algorithm / 手指偵測演算法
+### 🔢 Finger Detection Algorithm / 手指偵測演算法
 
 ```
 For each finger (index, middle, ring, pinky):
@@ -233,7 +237,7 @@ Joint angles calculated via:
 
 ---
 
-## Configuration / 設定參數
+## ⚙️ Configuration / 設定參數
 
 All configurable via `config.py`:
 
@@ -250,7 +254,7 @@ All configurable via `config.py`:
 
 ---
 
-## Project Stats / 專案統計
+## 📊 Project Stats / 專案統計
 
 ```
 Total Files:     35
@@ -263,7 +267,7 @@ Perf. Monitor:   318 lines (performance_monitor.py)
 
 ---
 
-## License
+## 📄 License
 
 MIT License
 
